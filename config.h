@@ -56,7 +56,7 @@
 #define HAVE_EVENTFD 1
 
 /* Define to 1 if you have the `FcPatternGet' function. */
-/* #undef HAVE_FCPATTERNGET */
+#define HAVE_FCPATTERNGET 1
 
 /* Define to 1 if the floor function is available */
 #define HAVE_FLOOR 1
@@ -101,7 +101,7 @@
 /* #undef HAVE_OPENPTY */
 
 /* Define if you want to use gdk-pixbuf for image processing */
-/* #undef HAVE_PIXBUF */
+#define HAVE_PIXBUF 1
 
 /* Define to 1 if you have the `poll' function. */
 #define HAVE_POLL 1
@@ -249,10 +249,10 @@
 #define HAVE_WCHAR_H 1
 
 /* Define to 1 if you have the <X11/Xft/Xft.h> header file. */
-/* #undef HAVE_X11_XFT_XFT_H */
+#define HAVE_X11_XFT_XFT_H 1
 
 /* Define to 1 if you have the `XftDrawString32' function. */
-/* #undef HAVE_XFTDRAWSTRING32 */
+#define HAVE_XFTDRAWSTRING32 1
 
 /* Define to enable Xmu support */
 #define HAVE_XMU 1
@@ -370,7 +370,7 @@
 #define STDC_HEADERS 1
 
 /* Set TERM to the value given by configure */
-#define TERMENV "rxvt-256color"
+/* #undef TERMENV */
 
 /* Define if you want blinking text support */
 #define TEXT_BLINK 1
@@ -379,13 +379,13 @@
 /* #undef TTY_GID_SUPPORT */
 
 /* Define if you want to represent unicode characters outside plane 0 */
-#define UNICODE_3 1
+/* #undef UNICODE_3 */
 
 /* "" */
 #define UNIX98_PTY 1
 
 /* Define if you want 256-color support */
-#define USE_256_COLORS 1
+/* #undef USE_256_COLORS */
 
 /* Enable extensions on AIX 3, Interix.  */
 #ifndef _ALL_SOURCE
@@ -420,7 +420,7 @@
 #define WTMP_SUPPORT 1
 
 /* Define to enable xft support */
-/* #undef XFT */
+#define XFT 1
 
 /* Define if your XIMCallback specifies XIC as first type. */
 /* #undef XIMCB_PROTO_BROKEN */

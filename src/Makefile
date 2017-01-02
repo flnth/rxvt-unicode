@@ -17,17 +17,17 @@ INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = /usr/bin/install -c -m 755
 INSTALL_DATA = /usr/bin/install -c -m 644
 CXXFLAGS = -g -O3 -fno-rtti -fvisibility-inlines-hidden -fno-threadsafe-statics -fno-enforce-eh-specs -w
-CPPFLAGS =   
+CPPFLAGS =    -I/usr/include/freetype2
 LDFLAGS = 
 DEFS = -DHAVE_CONFIG_H
 LIBS =  -lsupc++ -lm
-XINC =   
-XLIB = -lXrender -lX11 -lXmu -lXt -lX11  -lX11   
+XINC =  -pthread -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include 
+XLIB = -lfontconfig -lfreetype -lXft -lXrender -lX11 -lXmu -lXt -lX11  -lX11  -lgdk_pixbuf-2.0 -lgobject-2.0 -lglib-2.0 
 COMPILE = $(CXX) -I.. -I$(srcdir) -I. -I$(srcdir)/../libev -I$(srcdir)/../libptytty/src $(DEFS) $(CPPFLAGS) $(CXXFLAGS) $(XINC)
 LINK = gcc $(LDFLAGS)
 EXEEXT = 
-PERLFLAGS =  -D_REENTRANT -D_GNU_SOURCE -DDEBIAN -fwrapv -fno-strict-aliasing -pipe -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -I/usr/lib/x86_64-linux-gnu/perl/5.22/CORE 
-PERLLIB = -Wl,-E  -fstack-protector-strong -L/usr/local/lib  -L/usr/lib/x86_64-linux-gnu/perl/5.22/CORE -lperl -ldl -lm -lpthread -lc -lcrypt
+PERLFLAGS =  -D_REENTRANT -D_GNU_SOURCE -DDEBIAN -fwrapv -fno-strict-aliasing -pipe -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -I/usr/lib/x86_64-linux-gnu/perl/5.26/CORE 
+PERLLIB = -Wl,-E  -fstack-protector-strong -L/usr/local/lib  -L/usr/lib/x86_64-linux-gnu/perl/5.26/CORE -lperl -ldl -lm -lpthread -lc -lcrypt
 
 srcdir = .
 
@@ -136,7 +136,7 @@ perlxsi.c: Makefile
 	$(PERL) -MExtUtils::Embed -e xsinit -- -std urxvt
 
 rxvtperl.C: rxvtperl.xs iom_perl.h iom_perl.xs typemap typemap.iom
-	PERL="$(PERL)" $(PERL) /usr/share/perl/5.22/ExtUtils/xsubpp -C++ -typemap /usr/share/perl/5.22/ExtUtils/typemap -typemap 'typemap.iom' -typemap 'typemap' -prototypes $(srcdir)/rxvtperl.xs >$@
+	PERL="$(PERL)" $(PERL) /usr/share/perl/5.26/ExtUtils/xsubpp -C++ -typemap /usr/share/perl/5.26/ExtUtils/typemap -typemap 'typemap.iom' -typemap 'typemap' -prototypes $(srcdir)/rxvtperl.xs >$@
 
 rxvtperl.o: rxvtperl.C perlxsi.c
 	$(COMPILE) $(PERLFLAGS) -DLIBDIR="\"$(libdir)/urxvt\"" -c $<

@@ -98,7 +98,7 @@ install: all
 	$(INSTALL_DATA) rxvtc.1.man $(DESTDIR)$(man1dir)/$(RXVTNAME)c.$(man1ext)
 	$(INSTALL_DATA) rxvtd.1.man $(DESTDIR)$(man1dir)/$(RXVTNAME)d.$(man1ext)
 	$(INSTALL_DATA) rxvt.7.man  $(DESTDIR)$(man7dir)/$(RXVTNAME).$(man7ext)
-	/usr/bin/tic $(srcdir)/etc/rxvt-unicode.terminfo
+	/home/fthevissen/software/anaconda/bin/tic $(srcdir)/etc/rxvt-unicode.terminfo
 
 distdepend: alldoc
 
